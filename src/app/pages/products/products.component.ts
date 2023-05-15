@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   constructor(private productService:ProductService) {
    this.editProduct();
   }
-  
+
   ngOnInit(): void {
     this.getProducts();
     //this.getProduct();
@@ -58,14 +58,13 @@ export class ProductsComponent implements OnInit {
   editProduct(){
     this.selectedProduct = {title:'', price:0, description:''};
   }
-  
+
   deleteProduct(id: ProductModel['id']){
     this.productService.destroy(id).subscribe(
       response =>{
-        this.products = this.products.filter(product => product.id != id); 
+        this.products = this.products.filter(product => product.id != id);
         console.log(response);
       }
     )
   }
 }
-
