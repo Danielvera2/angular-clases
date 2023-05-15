@@ -13,7 +13,7 @@ import { AuthComponent } from './auth.component';
     AuthComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ]
 })
 export class AuthModule { }
