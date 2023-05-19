@@ -1,6 +1,22 @@
 <div class="container">
     <h1>Productos</h1>
     <h2>Carlos Vera</h2>
+    
+    <div class="card">
+        <div class="card-header">
+            Producto
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+              <label for="title" class="form-label">Producto:</label>
+              <input type="text" id="title" class="form-control" value="{{selectedProduct.title}}">
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            Footer
+        </div>
+    </div>
+    <hr>
     <div class="table-responsive">
         <table class="table table-primary">
             <thead>
@@ -8,18 +24,18 @@
                     <th >Nombre </th>
                     <th >Precio</th>
                     <th >Descripcion</th>
-                    <th >Categoria</th>
+                    <th >Imagenes</th>
                     <th >Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="" *ngFor= "let product of products ">
-                    <td {{product.title}}></td>
-                    <td {{product.price}}></td>
-                    <td {{product.description}}></td>
-                    <td><img src="{{product.images}}" width="200px" height="200px"></td>
-                    <td><a href="(click)=deleteProduct({{product.id}})"></a></td>
-
+                <tr class="" *ngFor="let product of products">
+                    <td> {{product.title}} </td>
+                <td> {{product.price}} </td>
+                <td> {{product.description}} </td>
+                <td><img src="{{product.images}} " alt="" width="200px" height="200px" > </td>
+                <td><button (click)="deleteProduct(product.id)">Eliminar</button></td>
+                <td><button (click)="editProduct()">Editar</button></td>
                 </tr>
 
             </tbody>

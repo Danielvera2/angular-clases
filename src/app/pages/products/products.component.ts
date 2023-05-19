@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { CreateProductDto, ProductModel, UpdateProductDto } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -18,9 +19,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-    //this.getProduct();
-    //this.createProduct();
-    //this.updateProduct();
+    // this.getProduct();
+    // this.createProduct();
+    // this.updateProduct();
     //this.deleteProduct();
   }
 
@@ -49,6 +50,11 @@ export class ProductsComponent implements OnInit {
     )
   }
   updateProduct(id: ProductModel['id'], product:UpdateProductDto){
+    // const data = {
+    //   title: 'Piano',
+    //   price: 156,
+    //   description: 'Instrumento musical'
+    // }
     this.productService.update(id, product).subscribe(
       response =>{
         console.log(response);
