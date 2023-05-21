@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CreateProductDto, ProductModel, UpdateProductDto } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -43,6 +42,18 @@ export class ProductsComponent implements OnInit {
     )
   }
   createProduct(product: CreateProductDto){
+    const data: CreateProductDto = {
+      title: "Pantalon",
+      price: 289,
+      description: "Pantalon",
+      images: ['http://api.lorem.space/image/furniture?w=640&h=480&r=8718'],
+      categoryId: 4,
+    };
+    
+    this.productService.store(data).subscribe(response => {
+      console.log(response);
+      this.getProducts();
+    });
     this.productService.store(product).subscribe(
       response =>{
         console.log(response);
@@ -50,11 +61,16 @@ export class ProductsComponent implements OnInit {
     )
   }
   updateProduct(id: ProductModel['id'], product:UpdateProductDto){
-    // const data = {
-    //   title: 'Piano',
-    //   price: 156,
-    //   description: 'Instrumento musical'
-    // }
+    const data = {
+      title: 'Piano',
+      price: 156,
+      description: 'Instrumento musical'
+    };
+    this.productService.update(12, data).subscribe(response => {
+      console.log(response);
+      this.getProducts();
+    });
+    
     this.productService.update(id, product).subscribe(
       response =>{
         console.log(response);
